@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:football_manager/ui/teams.dart';
 
+import 'ui/federation.dart';
 import 'ui/home_page.dart';
 import 'ui/past_matches_page.dart';
 import 'ui/results_page.dart';
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => HomePage(),
         '/fm': (context) => PastMatchesPage(),
-        '/t': (context) => TeamsPage(),
+        '/f': (context) => FederationsPage(),
         '/r': (context) => ResultsPage(),
       },
       initialRoute: '/',

@@ -9,7 +9,7 @@ import 'bloc.dart';
 
 
 class PastMatchesBloc extends Bloc<PastMatchesEvent, PastMatchesState> {
-  MatchesRepositoriesImpl repository;
+  MatchRepositoriesImpl repository;
   
   PastMatchesBloc({@required this.repository});
 

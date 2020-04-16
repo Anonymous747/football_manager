@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:football_manager/bloc/bloc_future_matches/bloc.dart';
 import 'package:football_manager/models/past_matches_model.dart';
+import 'package:football_manager/resourses/constants.dart';
 
 import 'package:http/http.dart' as http;
 
-import 'item_detail_page.dart';
 
 class PastMatchesPage extends StatefulWidget {
   @override
@@ -26,7 +26,7 @@ PastMatchesBloc pastMatchesBloc;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Past Matches"),),
+      appBar: AppBar(title: Text(PAGE1),),
       body: BlocListener<PastMatchesBloc, PastMatchesState>(
         listener: (context, state) {
           if (state is PastMatchesErrorState) {

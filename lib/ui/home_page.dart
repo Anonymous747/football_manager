@@ -1,14 +1,17 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:football_manager/bloc/bloc_federations/bloc.dart';
 import 'package:football_manager/bloc/bloc_future_matches/bloc.dart';
 import 'package:football_manager/bloc/bloc_future_matches/past_matches_bloc.dart';
+import 'package:football_manager/models/federations_model.dart';
 import 'package:football_manager/models/past_matches_model.dart';
 import 'package:football_manager/repositories/matches_repository.dart';
 
 import 'package:football_manager/resourses/constants.dart';
 import 'package:football_manager/ui/past_matches_page.dart';
 
+import 'federation.dart';
 import 'item_detail_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -75,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                         Navigator.push(context, MaterialPageRoute(
                           builder: (context) {
                             return BlocProvider(
-                              create: (context) => PastMatchesBloc(repository: MatchesRepositoriesImpl()),
+                              create: (context) => PastMatchesBloc(repository: MatchRepositoriesImpl()),
                               child: PastMatchesPage(),
                             );
                           },
@@ -89,9 +92,9 @@ class _HomePageState extends State<HomePage> {
                       onPressed: () {
                         Navigator.push(context, MaterialPageRoute(
                           builder: (context) {
-                            return BlocProvider<PastMatchesBloc> (
-                              create: (context) => PastMatchesBloc(repository: MatchesRepositoriesImpl()),
-                              child: PastMatchesPage(),
+                            return BlocProvider<FederationsBloc> (
+                              create: (context) => FederationsBloc(repository: MatchRepositoriesImpl()),
+                              child: FederationsPage(),
                             );
                           },
                         )); 
