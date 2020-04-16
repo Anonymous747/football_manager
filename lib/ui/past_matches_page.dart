@@ -80,7 +80,29 @@ PastMatchesBloc pastMatchesBloc;
           child: InkWell(
             child: ListTile(
               title: Text(match[pos].competitionName),
-              subtitle: Text(match[pos].date),              
+              subtitle: Text(match[pos].date),
+              onTap: () {
+                return Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return Scaffold(
+                        appBar: AppBar(title: Text(match[pos].awayName),),
+                        body: Container(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              
+                              Text(match[pos].competitionId),
+                              Text(match[pos].homeName)
+                            ],
+                          ),
+                        ),
+                      );
+                    }
+                  )
+                );
+              },              
             )
           )
         );
