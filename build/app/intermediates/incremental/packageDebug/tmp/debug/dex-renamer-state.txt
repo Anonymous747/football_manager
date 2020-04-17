@@ -1,4 +1,4 @@
-#Thu Apr 16 20:16:28 MSK 2020
+#Fri Apr 17 18:54:30 MSK 2020
 base.0=D\:\\flutter_app\\football_manager\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

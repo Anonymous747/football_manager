@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:football_manager/bloc/bloc_cups/bloc.dart';
 import 'package:football_manager/bloc/bloc_federations/bloc.dart';
 import 'package:football_manager/models/federations_model.dart';
+import 'package:football_manager/repositories/matches_repository.dart';
 import 'package:football_manager/resourses/constants.dart';
+import 'package:football_manager/ui/cups_page.dart';
 
 class FederationsPage extends StatefulWidget {
   @override
@@ -82,18 +85,11 @@ class _FederationsPageState extends State<FederationsPage> {
                 return Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) {
-                      return Scaffold(
-                        appBar: AppBar(title: Text(federation[pos].name),),
-                        body: Container(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              
-                              Text(federation[pos].name),
-                            ],
-                          ),
-                        ),
+                      return BlocProvider<CupsBloc>(
+                        create: (context) => CupsBloc(
+                          repository: MatchRepositoriesImpl(),
+                          cupName: federation[pos].name),
+                        child: CupsPage(),
                       );
                     }
                   )
