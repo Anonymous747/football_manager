@@ -1,10 +1,8 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:football_manager/bloc/bloc_federations/bloc.dart';
 import 'package:football_manager/bloc/bloc_future_matches/bloc.dart';
 import 'package:football_manager/bloc/bloc_future_matches/past_matches_bloc.dart';
-import 'package:football_manager/models/federations_model.dart';
 import 'package:football_manager/models/past_matches_model.dart';
 import 'package:football_manager/repositories/matches_repository.dart';
 
@@ -12,7 +10,8 @@ import 'package:football_manager/resourses/constants.dart';
 import 'package:football_manager/ui/past_matches_page.dart';
 
 import 'federation.dart';
-import 'item_detail_page.dart';
+import 'federation_results.dart';
+import 'ui_parts/item_detail_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -104,8 +103,15 @@ class _HomePageState extends State<HomePage> {
                   RaisedButton(
                     child: Text(PAGE3),
                     onPressed: () {
-                      Navigator.of(context).pushNamed('/r');
-                    },
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return BlocProvider<FederationsBloc> (
+                              create: (context) => FederationsBloc(repository: MatchRepositoriesImpl()),
+                              child: FederationResultsPage(),
+                            );
+                          },
+                        )); 
+                      },
                   ),
                 ],
               ),

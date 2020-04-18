@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:football_manager/models/cups_model.dart';
 import 'package:football_manager/models/federations_model.dart';
 import 'package:football_manager/models/leagues_model.dart';
+import 'package:football_manager/models/results.dart';
 import 'package:football_manager/resourses/strings.dart';
 import 'package:http/http.dart' as http;
 
@@ -13,6 +14,7 @@ abstract class MatchRepositories {
   Future<Info> getFederations();
   Future<Cup> getCups(String cupName);
   Future<Leagues> getLeagues(String leaguesName);
+  Future<Results> getResults(String resultName);
 
 }
 
@@ -60,6 +62,18 @@ class MatchRepositoriesImpl implements MatchRepositories {
       var data = json.decode(response.body);
       Leagues leagues = LeaguesModel.fromJson(data).leagues;
       return leagues;
+    } else {
+      throw Exception();
+    }
+  }
+
+  @override
+  Future<Results> getResults(String resultName) async {
+    var response = await http.get(RESULTS + "&competition_id=$resultName");
+    if (response.statusCode == 200) {
+      var data = json.decode(response.body);
+      Results results = ResultsModel.fromJson(data).results;
+      return results;
     } else {
       throw Exception();
     }
