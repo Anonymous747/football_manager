@@ -68,57 +68,71 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: <Widget>[
             SizedBox(height: 200,),
-            Center(
-              child: Column(
+            
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  RaisedButton(
-                    child: Text(PAGE1),
-                    onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(
-                          builder: (context) {
-                            return BlocProvider(
-                              create: (context) => PastMatchesBloc(repository: MatchRepositoriesImpl()),
-                              child: PastMatchesPage(),
-                            );
-                          },
-                        )); 
-                      },
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-                    child: RaisedButton(
-                      child: Text(PAGE2),
-                      onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(
-                          builder: (context) {
-                            return BlocProvider<FederationsBloc> (
-                              create: (context) => FederationsBloc(repository: MatchRepositoriesImpl()),
-                              child: FederationsPage(),
-                            );
-                          },
-                        )); 
-                      },
-                    ),
-                  ),
-                  RaisedButton(
-                    child: Text(PAGE3),
-                    onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(
-                          builder: (context) {
-                            return BlocProvider<FederationsBloc> (
-                              create: (context) => FederationsBloc(repository: MatchRepositoriesImpl()),
-                              child: FederationResultsPage(),
-                            );
-                          },
-                        )); 
-                      },
-                  ),
+                  _buttonOne(),
+                  _buttonTwo(),
+                  _buttonThree(),
                 ],
-              ),
-            )
-          ],
+              )
+            ],
         ),
       )
+    );
+  }
+
+  _buttonOne() {
+    RaisedButton(
+      child: Text(PAGE1),
+      onPressed: () {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (context) {
+              return BlocProvider(
+                create: (context) => PastMatchesBloc(repository: MatchRepositoriesImpl()),
+                child: PastMatchesPage(),
+            );
+          },
+        )); 
+      },
+    );
+  }
+
+  _buttonTwo() {
+    Padding(
+      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+      child: RaisedButton(
+        child: Text(PAGE2),
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (context) {
+              return BlocProvider<FederationsBloc> (
+                create: (context) => FederationsBloc(repository: MatchRepositoriesImpl()),
+                child: FederationsPage(),
+              );
+            },
+          )); 
+        },
+      ),
+    );
+  }
+
+  _buttonThree() {
+    RaisedButton(
+      child: Text(PAGE3),
+      onPressed: () {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (context) {
+              return BlocProvider<FederationsBloc> (
+                create: (context) => FederationsBloc(repository: MatchRepositoriesImpl()),
+                child: FederationResultsPage(),
+              );
+            },
+          )
+        ); 
+      },
     );
   }
 

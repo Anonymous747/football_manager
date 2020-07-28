@@ -112,7 +112,7 @@ class _ResultsPage extends State<ResultsPage> {
             )
           )
         );
-      },
+      }
     );
   }
 }

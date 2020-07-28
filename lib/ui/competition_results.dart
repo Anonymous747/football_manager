@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:football_manager/bloc/bloc_cups/bloc.dart';
-import 'package:football_manager/bloc/bloc_leagues/bloc.dart';
 import 'package:football_manager/bloc/bloc_results/bloc.dart';
 import 'package:football_manager/models/cups_model.dart';
 import 'package:football_manager/repositories/matches_repository.dart';
 import 'package:football_manager/resourses/constants.dart';
 
-import 'leagues_page.dart';
 import 'results_page.dart';
 
 class CompetitionResultsPage extends StatefulWidget {
